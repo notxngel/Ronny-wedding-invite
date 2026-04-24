@@ -1,4 +1,16 @@
-/** 0. CONFIGURACIÓN: Fecha y Elementos Base **/
+// --- 0. RESET UTILITY (Para pruebas) ---
+(function checkReset() {
+    const params = new URLSearchParams(window.location.search);
+    if (params.has('reset')) {
+        localStorage.removeItem('rsvpStatus');
+        const url = new URL(window.location.href);
+        url.searchParams.delete('reset');
+        window.history.replaceState({}, '', url);
+        window.location.reload();
+    }
+})();
+
+/** 1. CONFIGURACIÓN: Fecha y Elementos Base **/
 
 // Fecha de la boda: 11 de Julio de 2026 (ceremonia a las 6pm)
 const weddingDate = new Date("2026-07-11T18:00:00");
@@ -139,8 +151,10 @@ function toggleFAQ(button) {
       const heroBottom = heroSection.offsetHeight - 100;
       
       if (scrollY >= heroBottom) {
+        navbar.classList.add("is-visible");
         navbar.classList.add("navbar--scrolled");
       } else {
+        navbar.classList.remove("is-visible");
         navbar.classList.remove("navbar--scrolled");
       }
     });
@@ -149,9 +163,12 @@ function toggleFAQ(button) {
 
 /** 4. AUTO-LOAD RSVP: Verificar confirmación previa **/
 (function initRSVP() {
+    // Comentado temporalmente para pruebas: permite ver el formulario siempre
+    /*
     if (localStorage.getItem('rsvpStatus') === 'sent') {
         mostrarExito();
     }
+    */
 })();
 
 /** 5. CUPOS: Generación dinámica de campos de invitados **/
@@ -471,7 +488,7 @@ function mostrarExito() {
 
   rsvpContainer.innerHTML = `
         <div style="text-align: center; padding: 2rem 1rem;">
-            <div style="font-size: 3rem; margin-bottom: 1rem;">💍</div>
+            <!-- Icono o Imagen reemplazada/eliminada por peticion (Sin Emojis) -->
             <h2 style="font-family: var(--font-serif); font-size: 2rem; margin-bottom: 0.5rem;">
                 ${t("success_title")}
             </h2>

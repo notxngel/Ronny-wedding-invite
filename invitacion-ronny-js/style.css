@@ -204,9 +204,9 @@ body::before {
   display: flex;
   align-items: center;
   justify-content: center; /* Ayuda a que el container interno mande */
-  opacity: 1;
-  pointer-events: auto;
-  transform: translate(-50%, 0);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -20px);
   transition: opacity 0.4s ease, transform 0.4s ease, background 0.3s ease;
 }
 
@@ -217,30 +217,27 @@ body::before {
 }
 
 .navbar.is-visible {
-  /* Mantenemos la clase por compatibilidad, pero ya es visible por defecto */
   opacity: 1;
   pointer-events: auto;
   transform: translate(-50%, 0);
 }
 
 .navbar__container {
-  display: flex;
-  justify-content: space-between; /* Space logo, menu, and language toggle */
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
   width: 100%;
 }
 
-/* Elemento: Logo */
 .navbar__logo {
   font-family: var(--font-script);
   font-weight: normal;
   font-size: clamp(1.8rem, 6vw, 2.6rem);
-  line-height: 0.8; /* Ajuste para Brotherhood que es muy alta */
+  line-height: 0.8;
   color: var(--color-text-main);
   text-decoration: none;
-  display: inline-block;
   z-index: 10;
-  flex-shrink: 0;
+  justify-self: center;
   transition: transform var(--transition-base);
 }
 
@@ -248,6 +245,7 @@ body::before {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  justify-self: start;
 }
 
 /* Elemento: Botón Toggle (Hamburguesa) */
@@ -284,15 +282,19 @@ body::before {
   transform: translateY(-8px) rotate(-45deg);
 }
 
-/* Elemento: Menú */
+.navbar__right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-self: end; /* Ocupa el espacio derecho */
+}
+
 .navbar__menu {
   display: flex;
   gap: clamp(0.5rem, 2vw, 1.5rem);
   list-style: none;
   margin: 0;
   padding: 0;
-  flex: 1;
-  justify-content: center;
 }
 
 /* Elemento: Enlace */
@@ -322,25 +324,25 @@ body::before {
 
 /* Elemento: Botón de Idioma */
 .navbar__lang {
-  background: none;
-  border: none;
-  padding: 0.6em 1em;
+  background: transparent;
+  border: 1px solid rgba(168, 127, 59, 0.15);
+  padding: 0;
+  width: 42px;
+  height: 42px;
   cursor: pointer;
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  border-radius: 0;
-}
-
-.navbar__lang::before {
-  display: none; /* remove hover line */
-}
-
-.navbar__lang::after {
-  display: none; /* remove hover line */
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-gold);
+  transition: all var(--transition-base);
 }
 
 .navbar__lang:hover {
-  background: transparent;
+  background: rgba(168, 127, 59, 0.05);
+  border-color: var(--color-gold);
 }
 
 
@@ -378,8 +380,8 @@ body::before {
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 20px; /* Bordes suavemente redondeados para elegancia */
   max-width: 90%;
-  width: auto;
-  margin: 0 auto;
+  width: 100%;
+  margin: 1rem;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
 }
 
@@ -822,9 +824,6 @@ body::before {
   padding: 1.1em 3em;
 }
 
-/* --- 14. MODAL: Eliminado por incrustación HTML directa --- */
-  transition: color var(--transition-fast);
-}
 
 .modal__close:hover,
 .modal__close:focus {
@@ -1151,7 +1150,7 @@ body::before {
 
   .navbar__lang {
     font-size: 0.75rem;
-    margin-left: 0;
+    margin: 0; /* Remove right margin on mobile */
   }
 
   /* --- Hero --- */
