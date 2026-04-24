@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Invitación de boda de Bil Ronny Jiménez & Dahyana Hiciano Perez. 11 de Julio de 2026.">
+    <title>Boda de Bil Ronny & Dahyana</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+    <!-- Open Graph / WhatsApp / Redes Sociales -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Boda de Bil Ronny &amp; Dahyana — 11 de Julio 2026">
+    <meta property="og:description"
+        content="Nos casamos y queremos que sean parte de este día tan especial. Confirma tu asistencia.">
+    <meta property="og:image" content="images/og_wedding_ronny.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="es_ES">
+    <!-- Twitter Card (también funciona en iMessage) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Boda de Bil Ronny &amp; Dahyana — 11 de Julio 2026">
+    <meta name="twitter:description"
+        content="Nos casamos y queremos que sean parte de este día tan especial. Confirma tu asistencia.">
+    <meta name="twitter:image" content="images/og_wedding_ronny.png">
+    <!-- Schema.org -->
+    <meta itemprop="name" content="Boda de Bil Ronny &amp; Dahyana — 11 de Julio 2026">
+    <meta itemprop="description"
+        content="Nos casamos y queremos que sean parte de este día tan especial. Confirma tu asistencia.">
+    <meta itemprop="image" content="images/og_wedding_ronny.png">
+    <!-- Fuentes de Google -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    </noscript>
+    <link href="https://fonts.cdnfonts.com/css/brotherhood-script" rel="stylesheet">
+    <!-- Estilos -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+
+
+    <!-- Sección: Navbar -->
+    <nav class="navbar" aria-label="Navegación principal">
+        <div class="navbar__container">
+            <a href="#home" class="navbar__logo" aria-label="Ir al inicio - Bil Ronny y Dahyana">B &amp; D</a>
+            <ul class="navbar__menu" id="navbarMenu" role="list">
+                <li><a href="#home" class="navbar__link" data-i18n="nav_home">Inicio</a></li>
+                <li><a href="#photo-album" class="navbar__link" data-i18n="nav_moments">Momentos</a></li>
+                <li><a href="#details" class="navbar__link" data-i18n="nav_details">Detalles</a></li>
+            </ul>
+            <div class="navbar__actions">
+                <button class="navbar__toggle" id="navbarToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="navbarMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <button class="navbar__link navbar__lang" id="langToggle" aria-label="Cambiar idioma">
+                    <span id="langLabel">ENG</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sección: Hero (Portada) -->
+    <section id="home" class="hero" aria-labelledby="hero-title">
+        <!-- Imagen de Fondo -->
+        <div class="hero__background" role="img" aria-label="Fotografía de fondo de la boda"></div>
+
+        <!-- Contenido Principal -->
+        <div class="hero__content">
+            <p class="hero__eyebrow bounce-in" data-i18n="hero_eyebrow">¡NOS CASAMOS!</p>
+            <h1 id="hero-title" class="hero__title fade-in">
+                <span>Bil Ronny</span>
+                <span class="hero__amp">&amp;</span>
+                <span>Dahyana</span>
+            </h1>
+            <div class="hero__divider" aria-hidden="true"></div>
+
+            <div class="hero__details">
+                <p class="hero__date" data-i18n="hero_date">Sábado, 11 de Julio de 2026</p>
+                <p class="hero__instruction" data-i18n="hero_instruction">Desplázate para conocer los detalles del
+                    evento.</p>
+            </div>
+
+            <!-- Cuenta Regresiva -->
+            <div id="countdown" class="countdown" aria-label="Cuenta regresiva para la boda">
+                <div class="countdown__item">
+                    <span id="days" class="countdown__number" aria-live="polite">0</span>
+                    <span class="countdown__label" data-i18n="countdown_days">Días</span>
+                </div>
+                <div class="countdown__item">
+                    <span id="hours" class="countdown__number" aria-live="polite">0</span>
+                    <span class="countdown__label" data-i18n="countdown_hours">Horas</span>
+                </div>
+                <div class="countdown__item">
+                    <span id="minutes" class="countdown__number" aria-live="polite">0</span>
+                    <span class="countdown__label" data-i18n="countdown_minutes">Minutos</span>
+                </div>
+                <div class="countdown__item">
+                    <span id="seconds" class="countdown__number" aria-live="polite">0</span>
+                    <span class="countdown__label" data-i18n="countdown_seconds">Segundos</span>
+                </div>
+            </div>
+
+
+        </div>
+
+        <!-- Flecha animada -->
+        <div class="hero__scroll-indicator" aria-hidden="true">
+            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3">
+                </path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Sección: Album (Galería de Fotos) -->
+    <section id="photo-album" class="album" aria-labelledby="album-title">
+        <div class="container">
+            <div class="section-header">
+                <h2 id="album-title" class="section-header__title" data-i18n="album_title">Momentos que nos trajeron
+                    aquí</h2>
+                <p class="section-header__subtitle" data-i18n="album_subtitle">Un día que cambió nuestras vidas para
+                    siempre</p>
+            </div>
+
+            <!-- Galería Timeline -->
+            <div class="gallery-timeline" id="albumTimeline">
+                <div class="gallery-timeline__line" aria-hidden="true"></div>
+                <!-- Polaroid 1 -->
+                <article class="polaroid gallery-timeline__item">
+                    <div class="polaroid__frame">
+                        <img src="images/hero_wedding_sage.webp" alt="Momento especial de la pareja" loading="lazy" class="polaroid__img">
+                        <p class="polaroid__caption" data-i18n="caption_1">La gran pregunta</p>
+                    </div>
+                </article>
+
+                <!-- Polaroid 2 -->
+                <article class="polaroid gallery-timeline__item">
+                    <div class="polaroid__frame">
+                        <img src="images/hero_wedding_sage.webp" alt="Momento especial de la pareja" loading="lazy" class="polaroid__img">
+                        <p class="polaroid__caption" data-i18n="caption_2">¡Dijo que sí!</p>
+                    </div>
+                </article>
+
+                <!-- Polaroid 3 -->
+                <article class="polaroid gallery-timeline__item">
+                    <div class="polaroid__frame">
+                        <img src="images/hero_wedding_sage.webp" alt="Bil Ronny y Dahyana juntos" loading="lazy" class="polaroid__img">
+                        <p class="polaroid__caption" data-i18n="caption_3">Tú y yo, siempre</p>
+                    </div>
+                </article>
+
+                <!-- Polaroid 4 -->
+                <article class="polaroid gallery-timeline__item">
+                    <div class="polaroid__frame">
+                        <img src="images/hero_wedding_sage.webp" alt="Promesa eterna de amor" loading="lazy" class="polaroid__img">
+                        <p class="polaroid__caption" data-i18n="caption_4">Para siempre</p>
+                    </div>
+                </article>
+
+                <!-- Polaroid 5 -->
+                <article class="polaroid gallery-timeline__item">
+                    <div class="polaroid__frame">
+                        <img src="images/hero_wedding_sage.webp" alt="Con todo mi amor" loading="lazy" class="polaroid__img">
+                        <p class="polaroid__caption" data-i18n="caption_5">Con todo mi corazón</p>
+                    </div>
+                </article>
+
+                <!-- Polaroid 6 -->
+                <article class="polaroid gallery-timeline__item">
+                    <div class="polaroid__frame">
+                        <img src="images/hero_wedding_sage.webp" alt="Juntos es mi lugar favorito" loading="lazy" class="polaroid__img">
+                        <p class="polaroid__caption" data-i18n="caption_6">Mi lugar favorito</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Detalles (Cronograma) -->
+    <section id="details" class="details" aria-labelledby="details-title">
+        <div class="container">
+            <div class="section-header">
+                <h2 id="details-title" class="section-header__title" data-i18n="details_title">Detalles del Evento</h2>
+                <p class="section-header__subtitle" data-i18n="details_subtitle">Todo lo que necesitas saber</p>
+            </div>
+
+            <!-- FAQ (Acordeón de Detalles) -->
+            <div class="faq" role="list" aria-label="Preguntas frecuentes y detalles">
+                <!-- 1. Ceremonia -->
+                <div class="faq__item" role="listitem">
+                    <button class="faq__question" aria-expanded="false" onclick="toggleFAQ(this)">
+                        <span data-i18n="faq_q1">¿Cuándo y dónde es la ceremonia?</span>
+                        <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <div class="faq__answer">
+                        <div class="faq__answer-content">
+                            <p><strong data-i18n="timeline_church">Ceremonia</strong></p>
+                            <p>6:00 PM — Lugar por confirmar</p>
+                            <p class="faq__small" data-i18n="timeline_church_desc">6:00 PM - Inicio puntual.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Recepción -->
+                <div class="faq__item" role="listitem">
+                    <button class="faq__question" aria-expanded="false" onclick="toggleFAQ(this)">
+                        <span data-i18n="faq_q2">¿A qué hora es la recepción?</span>
+                        <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <div class="faq__answer">
+                        <div class="faq__answer-content">
+                            <p><strong data-i18n="timeline_event">Recepción</strong></p>
+                            <p>7:00 PM — Lugar por confirmar</p>
+                            <p class="faq__small" data-i18n="timeline_desc">7:00 PM - Inicio puntual; los esperamos para celebrar juntos.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Dress Code -->
+                <div class="faq__item" role="listitem">
+                    <button class="faq__question" aria-expanded="false" onclick="toggleFAQ(this)">
+                        <span data-i18n="faq_q3">¿Cuál es el código de vestimenta?</span>
+                        <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <div class="faq__answer">
+                        <div class="faq__answer-content">
+                            <p><strong data-i18n="dress_title">Código de Vestimenta</strong></p>
+                            <p data-i18n="dress_desc">Formal / No usar colores verdes o blancos.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Niños -->
+                <div class="faq__item" role="listitem">
+                    <button class="faq__question" aria-expanded="false" onclick="toggleFAQ(this)">
+                        <span data-i18n="faq_q4">¿Se permiten niños?</span>
+                        <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <div class="faq__answer">
+                        <div class="faq__answer-content">
+                            <p><strong data-i18n="no_kids_title">No Niños</strong></p>
+                            <p data-i18n="no_kids_desc">Celebración sólo para adultos.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Regalos -->
+                <div class="faq__item" role="listitem">
+                    <button class="faq__question" aria-expanded="false" onclick="toggleFAQ(this)">
+                        <span data-i18n="faq_q5">¿Tienen mesa de regalos?</span>
+                        <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <div class="faq__answer">
+                        <div class="faq__answer-content">
+                            <p><strong data-i18n="gifts_title">Regalos</strong></p>
+                            <p data-i18n="gifts_desc">Lluvia de sobres.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. Cupos -->
+                <div class="faq__item" role="listitem">
+                    <button class="faq__question" aria-expanded="false" onclick="toggleFAQ(this)">
+                        <span data-i18n="faq_q6">¿Cuántos cupos tengo asignados?</span>
+                        <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <div class="faq__answer">
+                        <div class="faq__answer-content">
+                            <p><strong data-i18n="seats_title">Cupos</strong></p>
+                            <p data-i18n="seats_desc">Agradecemos respetar los cupos asignados en su invitación.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Ubicaciones (Mapas) -->
+    <section id="locations" class="locations" aria-labelledby="locations-title">
+        <div class="container">
+            <div class="section-header">
+                <h2 id="locations-title" class="section-header__title" data-i18n="loc_title">¿Cómo Llegar?</h2>
+                <p class="section-header__subtitle" data-i18n="loc_subtitle">Te esperamos en</p>
+            </div>
+
+            <!-- Location Card: The Brownstone Hall -->
+            <div class="location-card map-in">
+                <div class="location-card__header">
+                    <h3 class="location-card__title">The Brownstone Hall</h3>
+                    <p class="location-card__address">Paterson, NJ — Desde las 6:00 PM</p>
+                    <a href="https://maps.app.goo.gl/search/The+Brownstone,+Paterson" target="_blank"
+                        rel="noopener" class="btn btn--dark location-card__btn">
+                        <span data-i18n="loc_btn">Abrir en Google Maps</span>
+                    </a>
+                </div>
+                <div class="location-card__map-container">
+                    <iframe
+                        src="https://maps.google.com/maps?q=The+Brownstone+Paterson+NJ&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                        class="location-card__iframe" title="Mapa de la Celebración">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: RSVP (Confirmación) -->
+    <section id="rsvp" class="rsvp" aria-labelledby="rsvp-title">
+        <div class="container">
+            <div class="section-header">
+                <h2 id="rsvp-title" class="section-header__title" data-i18n="rsvp_title">Confirmación</h2>
+                <p class="section-header__subtitle" data-i18n="rsvp_subtitle">Será un placer compartir este momento tan
+                    especial con ustedes</p>
+            </div>
+
+            <div class="rsvp__card" id="rsvpContainer">
+                <div class="rsvp__card-accent" aria-hidden="true"></div>
+                
+                <h2 id="modal-title" class="section-header__title" style="margin-bottom: 0.25em;" data-i18n="modal_title">Confirmación</h2>
+                <p class="rsvp__card-subtitle" style="margin-bottom: 0.5em;" data-i18n="modal_subtitle">Será un placer contar contigo</p>
+                <p class="rsvp__card-text" style="font-size: 0.9rem;" data-i18n="modal_deadline">Por favor confirma antes del <strong>15 de Junio</strong></p>
+                
+                <div class="rsvp__card-divider" aria-hidden="true" style="margin: 2rem auto;"></div>
+
+                <form id="rsvpForm" class="form" novalidate>
+                    <!-- Honeypot anti-bot -->
+                    <div style="position:absolute;left:-9999px;top:-9999px;" aria-hidden="true">
+                        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+                    </div>
+                    <!-- Campos generados dinamicamente -->
+                    <div id="guestNamesContainer"></div>
+
+                    <fieldset class="form__group">
+                        <legend class="form__label" data-i18n="form_attendance">¿Asistirás?</legend>
+                        <div class="form__radio-group">
+                            <label class="form__radio-option">
+                                <input type="radio" name="attendance" value="si" checked>
+                                <span data-i18n="form_yes">¡Sí, ahí estaré!</span>
+                            </label>
+                            <label class="form__radio-option">
+                                <input type="radio" name="attendance" value="no">
+                                <span data-i18n="form_no">Lo siento, no podré ir</span>
+                            </label>
+                        </div>
+                    </fieldset>
+
+                    <div class="form__group">
+                        <label class="form__label" for="phone" data-i18n="form_phone">Teléfono Móvil (WhatsApp)</label>
+                        <input type="tel" class="form__input" id="phone" name="phone" inputmode="tel"
+                            placeholder="Ej. +1 809 123 4567" data-i18n-placeholder="form_phone_placeholder" required>
+                        <span class="form__error" id="error-phone"></span>
+                    </div>
+
+
+
+                    <div class="form__group">
+                        <label class="form__label" for="message" data-i18n="form_message">Mensaje (Opcional)</label>
+                        <textarea class="form__input" id="message" name="message" rows="2"
+                            placeholder="Déjanos tus mejores deseos..." data-i18n-placeholder="form_message_placeholder"></textarea>
+                    </div>
+
+                    <button type="submit" id="submitBtn" class="btn btn--submit" data-i18n="form_submit">Enviar Confirmación</button>
+                </form>
+            </div>
+
+    <!-- Sección: Footer -->
+    <footer class="footer">
+        <div class="footer__container fade-in">
+            <span class="footer__eyebrow" data-i18n="footer_eyebrow">Con cariño y gratitud</span>
+            <h2 class="footer__title">Bil Ronny <span>&amp;</span> Dahyana</h2>
+            <div class="footer__date">11.07.2026</div>
+            <div class="footer__separator"></div>
+            <p class="footer__text">&copy; 2026 Bil Ronny &amp; Dahyana.</p>
+            <p class="footer__text footer__text--small" data-i18n="footer_made">Hecho con amor para nuestros invitados
+            </p>
+            <p class="footer__text footer__text--small" style="margin-top: 1rem; color: #a8a29e; font-size: 0.75rem;">Diseñado por AM dev Studio</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="config.js"></script>
+    <script src="i18n.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
