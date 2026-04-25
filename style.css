@@ -232,7 +232,7 @@ body::before {
 .navbar__logo {
   font-family: var(--font-script);
   font-weight: normal;
-  font-size: clamp(1.8rem, 6vw, 2.6rem);
+  font-size: clamp(2rem, 7vw, 2.8rem); /* Slightly increased */
   line-height: 0.8;
   color: var(--color-text-main);
   text-decoration: none;
@@ -285,13 +285,13 @@ body::before {
 .navbar__right {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem; /* Reduced from 1rem */
   justify-self: end; /* Ocupa el espacio derecho */
 }
 
 .navbar__menu {
   display: flex;
-  gap: clamp(0.5rem, 2vw, 1.5rem);
+  gap: clamp(0.3rem, 1vw, 1rem); /* Further reduced gap */
   list-style: none;
   margin: 0;
   padding: 0;
@@ -303,9 +303,9 @@ body::before {
   text-decoration: none;
   color: var(--color-text-muted);
   font-family: var(--font-sans);
-  font-size: clamp(0.85rem, 1.2vw, 1rem); /* Bumping min size */
+  font-size: clamp(0.7rem, 0.8vw, 0.85rem); /* Further reduced for more space */
   font-weight: 700;
-  padding: 0.5em 0.8em;
+  padding: 0.3em 0.5em; /* Further reduced padding */
   text-transform: uppercase;
   letter-spacing: 0.1em;
   transition: color var(--transition-base), background var(--transition-base);
@@ -1142,7 +1142,7 @@ body::before {
   }
 
   .navbar__link {
-    font-size: 0.9rem;
+    font-size: 0.8rem; /* Reduced from 0.9rem */
     padding: 1rem;
     width: 100%;
     text-align: center;
@@ -1255,7 +1255,7 @@ body::before {
   }
 
   .navbar__link {
-    font-size: 0.8rem;
+    font-size: 0.7rem; /* Reduced from 0.8rem */
     padding: 0.8rem;
   }
 
@@ -1453,7 +1453,7 @@ body::before {
   }
 
   .navbar__menu {
-    gap: var(--space-xl);
+    gap: var(--space-lg); /* Reduced from var(--space-xl) */
   }
 
   /* --- Card --- */
