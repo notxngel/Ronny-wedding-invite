@@ -232,7 +232,7 @@ body::before {
 .navbar__logo {
   font-family: var(--font-script);
   font-weight: normal;
-  font-size: clamp(2rem, 7vw, 2.8rem); /* Slightly increased */
+  font-size: clamp(1.8rem, 6vw, 2.6rem);
   line-height: 0.8;
   color: var(--color-text-main);
   text-decoration: none;
@@ -291,7 +291,7 @@ body::before {
 
 .navbar__menu {
   display: flex;
-  gap: clamp(0.3rem, 1vw, 1rem); /* Further reduced gap */
+  gap: clamp(0.4rem, 1.5vw, 1.2rem); /* Reduced gap */
   list-style: none;
   margin: 0;
   padding: 0;
@@ -1100,12 +1100,13 @@ body::before {
   animation-delay: 0.2s;
 }
 
-/* --- 18. MEDIA: Móvil (max-width: 600px) --- */
-@media (max-width: 600px) {
+/* --- 18. MEDIA: Móvil (max-width: 850px) --- */
+@media (max-width: 850px) {
   /* --- Navbar --- */
   .navbar {
     padding: 0.4rem 1rem;
-    max-width: 92%;
+    max-width: 95%;
+    top: 0.75rem;
   }
 
   .navbar__toggle {
@@ -1124,7 +1125,7 @@ body::before {
     padding: 1.5rem 0;
     gap: 0.5rem;
     border-radius: 25px; /* Matched with pill design but individual */
-    margin-top: 15px;
+    margin-top: 10px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     opacity: 0;
     pointer-events: none;
@@ -1137,8 +1138,8 @@ body::before {
   .navbar.is-open .navbar__menu {
     opacity: 1;
     pointer-events: auto;
-    transform: translateY(15px);
-    padding: 3rem 1.5rem; /* Más espacio interno para evitar amontonamiento */
+    transform: translateY(10px);
+    padding: 2.5rem 1.5rem; /* Más espacio interno para evitar amontonamiento */
   }
 
   .navbar__link {
@@ -1443,19 +1444,6 @@ body::before {
     padding: 0 var(--space-2xl);
   }
 
-  /* --- Navbar --- */
-  .navbar__container {
-    justify-content: space-between;
-  }
-
-  .navbar__logo {
-    display: block;
-  }
-
-  .navbar__menu {
-    gap: var(--space-lg); /* Reduced from var(--space-xl) */
-  }
-
   /* --- Card --- */
   .card {
     padding: var(--space-2xl);
@@ -1523,6 +1511,21 @@ body::before {
     padding: 1.5rem 4rem 0 1.5rem; /* Separación de la línea central */
   }
 
+}
+
+/* --- 21. MEDIA: Navbar Escritorio (min-width: 851px) --- */
+@media (min-width: 851px) {
+  .navbar__container {
+    justify-content: space-between;
+  }
+
+  .navbar__logo {
+    display: block;
+  }
+
+  .navbar__menu {
+    gap: var(--space-xl);
+  }
 }
 
 /* ==========================================================================
