@@ -34,11 +34,11 @@
     <!-- Fuentes de Google -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Parisienne&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript>
-        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Parisienne&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
     </noscript>
-    <link href="https://fonts.cdnfonts.com/css/brotherhood-script" rel="stylesheet">
     <!-- Estilos -->
     <link rel="stylesheet" href="style.css">
 </head>
@@ -343,11 +343,11 @@
             <div class="rsvp__card" id="rsvpContainer">
                 <div class="rsvp__card-accent" aria-hidden="true"></div>
                 
-                <h2 id="modal-title" class="section-header__title" style="margin-bottom: 0.25em;" data-i18n="modal_title">Confirmación</h2>
-                <p class="rsvp__card-subtitle" style="margin-bottom: 0.5em;" data-i18n="modal_subtitle">Será un placer contar contigo</p>
-                <p class="rsvp__card-text" style="font-size: 0.9rem;" data-i18n="modal_deadline">Por favor confirma antes del <strong>15 de Junio</strong></p>
+                <h2 id="modal-title" class="section-header__title rsvp__card-title" data-i18n="modal_title">Confirmación</h2>
+                <p class="rsvp__card-subtitle" data-i18n="modal_subtitle">Será un placer contar contigo</p>
+                <p class="rsvp__card-text" data-i18n="modal_deadline">Por favor confirma antes del <strong>15 de Junio</strong></p>
                 
-                <div class="rsvp__card-divider" aria-hidden="true" style="margin: 2rem auto;"></div>
+                <div class="rsvp__card-divider" aria-hidden="true"></div>
 
                 <form id="rsvpForm" class="form" novalidate>
                     <!-- Honeypot anti-bot -->
@@ -389,6 +389,8 @@
                     <button type="submit" id="submitBtn" class="btn btn--submit" data-i18n="form_submit">Enviar Confirmación</button>
                 </form>
             </div>
+        </div>
+    </section>
 
     <!-- Sección: Footer -->
     <footer class="footer">

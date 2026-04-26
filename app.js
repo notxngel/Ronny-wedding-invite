@@ -114,33 +114,32 @@ function toggleFAQ(button) {
   const toggle = document.getElementById("navbarToggle");
   const menu = document.getElementById("navbarMenu");
   const heroSection = document.getElementById("home");
-  const links = document.querySelectorAll(".navbar__link");
+  const links = document.querySelectorAll(".navbar__menu .navbar__link");
 
   if (!navbar) return;
 
-  // --- 3.1 Toggle Menú Móvil ---
+  function setMenuState(open) {
+    navbar.classList.toggle("is-open", open);
+    if (toggle) toggle.setAttribute("aria-expanded", String(open));
+  }
+
   if (toggle && menu) {
     toggle.addEventListener("click", (e) => {
-        e.stopPropagation();
-        navbar.classList.toggle("is-open");
-        const isOpen = navbar.classList.contains("is-open");
-        toggle.setAttribute("aria-expanded", String(isOpen));
+      e.preventDefault();
+      e.stopPropagation();
+      setMenuState(!navbar.classList.contains("is-open"));
     });
 
-    // Cerrar al hacer click fuera
     document.addEventListener("click", (e) => {
-        if (!navbar.contains(e.target)) {
-            navbar.classList.remove("is-open");
-            toggle.setAttribute("aria-expanded", "false");
-        }
+      if (!navbar.contains(e.target)) setMenuState(false);
     });
 
-    // Cerrar al hacer click en un link
-    links.forEach(link => {
-        link.addEventListener("click", () => {
-            navbar.classList.remove("is-open");
-            toggle.setAttribute("aria-expanded", "false");
-        });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") setMenuState(false);
+    });
+
+    links.forEach((link) => {
+      link.addEventListener("click", () => setMenuState(false));
     });
   }
 
@@ -150,13 +149,7 @@ function toggleFAQ(button) {
       const scrollY = window.scrollY;
       const heroBottom = heroSection.offsetHeight - 100;
       
-      if (scrollY >= heroBottom) {
-        navbar.classList.add("is-visible");
-        navbar.classList.add("navbar--scrolled");
-      } else {
-        navbar.classList.remove("is-visible");
-        navbar.classList.remove("navbar--scrolled");
-      }
+      navbar.classList.toggle("navbar--scrolled", scrollY >= heroBottom);
     });
   }
 })();

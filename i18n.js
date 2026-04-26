@@ -1,278 +1,228 @@
-/** i18n — Soporte bilingüe (ES por defecto, EN con ?lang=en) **/
-
+/** i18n Core - ES por defecto, EN opcional **/
 let LANG = (() => {
   const params = new URLSearchParams(window.location.search);
   return params.get("lang") === "en" ? "en" : "es";
 })();
 
-const I18N = {
+const I18N = Object.freeze({
   es: {
-    // Navbar
     nav_home: "Inicio",
-    nav_moments: "Momentos",
+    nav_moments: "Nuestra Historia",
     nav_details: "Detalles",
 
-    // Hero
-    hero_eyebrow: "¡NOS CASAMOS!",
-    hero_date: "Sábado, 11 de Julio de 2026",
-    hero_instruction: "Desplázate para conocer los detalles del evento.",
-    countdown_days: "Días",
+    hero_eyebrow: "Nos casamos",
+    hero_date: "11 de julio de 2026",
+    hero_instruction: "Desliza y descubre cada detalle.",
+    countdown_days: "Dias",
     countdown_hours: "Horas",
-    countdown_minutes: "Minutos",
-    countdown_seconds: "Segundos",
-    countdown_passed: "¡A partir de hoy, somos esposos!",
+    countdown_minutes: "Min",
+    countdown_seconds: "Seg",
+    countdown_passed: "Ya comenzo nuestro nuevo capitulo.",
 
-    // Album
-    album_title: "Momentos que nos trajeron aquí",
-    album_subtitle: "Un día que cambió nuestras vidas para siempre",
-    caption_1: "La gran pregunta",
-    caption_2: "¡Dijo que sí!",
-    caption_3: "Tú y yo, siempre",
-    caption_4: "Para siempre",
-    caption_5: "Con todo mi corazón",
-    caption_6: "Mi lugar favorito",
+    album_title: "Momentos que nos trajeron hasta aqui",
+    album_subtitle: "Bil Ronny Jimenez y Dahyana Hiciano Perez",
+    caption_1: "La promesa",
+    caption_2: "Complices",
+    caption_3: "Nuestro para siempre",
+    caption_4: "Elegancia y amor",
+    caption_5: "Nuestra mejor version",
+    caption_6: "Un solo camino",
 
-    // Details
-    details_title: "Detalles del Evento",
+    details_title: "Detalles del evento",
     details_subtitle: "Todo lo que necesitas saber",
     timeline_church: "Ceremonia",
     timeline_church_desc: "6:00 PM - Inicio puntual.",
-    timeline_event: "Recepción",
-    timeline_desc: "7:00 PM - Inicio puntual; los esperamos para celebrar juntos.",
-    dress_title: "Código de Vestimenta",
-    dress_desc: "Formal / No usar colores verdes o blancos.",
-    no_kids_title: "No Niños",
-    no_kids_desc: "Celebración sólo para adultos.",
+    timeline_event: "Recepcion",
+    timeline_desc: "7:00 PM - Brindis y celebracion.",
+    dress_title: "Dress code",
+    dress_desc: "Formal. Importante: evitar color verde y color blanco.",
+    no_kids_title: "Invitacion para adultos",
+    no_kids_desc: "Agradecemos coordinar el cuidado de los pequenos.",
     gifts_title: "Regalos",
-    gifts_desc: "Lluvia de sobres.",
+    gifts_desc: "Tu presencia es nuestro mejor regalo.",
     seats_title: "Cupos",
-    seats_desc: "Agradecemos respetar los cupos asignados en su invitación.",
-    faq_q1: "¿Cuándo y dónde es la ceremonia?",
-    faq_q2: "¿A qué hora es la recepción?",
-    faq_q3: "¿Cuál es el código de vestimenta?",
-    faq_q4: "¿Se permiten niños?",
-    faq_q5: "¿Tienen mesa de regalos?",
-    faq_q6: "¿Cuántos cupos tengo asignados?",
+    seats_desc: "Respeta los cupos indicados en tu enlace.",
+    faq_q1: "Cuando y a que hora es la ceremonia?",
+    faq_q2: "A que hora inicia la recepcion?",
+    faq_q3: "Cual es el codigo de vestimenta?",
+    faq_q4: "Hay restricciones de color?",
+    faq_q5: "Se permiten ninos?",
+    faq_q6: "Como funciona mi cupo?",
 
-    // Locations
-    loc_title: "¿Cómo Llegar?",
-    loc_subtitle: "Te esperamos en",
-    loc_btn: "Abrir en Google Maps",
+    loc_title: "Ubicacion",
+    loc_subtitle: "Abrir ruta en Google Maps",
+    loc_btn: "Ver en Google Maps",
 
-    // RSVP
-    rsvp_title: "Confirmación",
-    rsvp_subtitle: "Será un placer compartir este momento tan especial con ustedes",
-    rsvp_card_subtitle: "Esperamos contar con tu presencia",
-    rsvp_card_text: "¿Ya revisaste todos los detalles del evento? Asegúrate de leerlos antes de confirmarnos tu asistencia.",
-    rsvp_deadline: "Fecha límite: 15 de Junio",
-    rsvp_open_btn: "Abrir Formulario",
+    rsvp_title: "Confirma tu asistencia",
+    rsvp_subtitle: "Fecha limite: 15 de junio de 2026",
+    rsvp_card_subtitle: "Nos encantara compartir contigo",
+    rsvp_card_text: "Completa el formulario una sola vez por familia.",
+    rsvp_deadline: "Confirma antes del 15 de junio",
+    rsvp_open_btn: "Confirmar ahora",
 
-    // Modal Form
-    modal_title: "Confirmación",
-    modal_subtitle: "Será un placer contar contigo",
-    modal_deadline: "Por favor confirma antes del <strong>15 de Junio</strong>",
-    form_name: "Tu nombre completo",
-    form_companion: "Acompañante",
-    form_name_placeholder: "Ej: María García",
-    form_companion_placeholder: "Nombre completo",
-    form_attendance: "¿Asistirás?",
-    form_yes: "¡Sí, ahí estaré!",
-    form_no: "Lo siento, no podré ir",
-    form_phone: "Teléfono Móvil (WhatsApp)",
-    form_phone_placeholder: "Ej. +1 809 123 4567",
-    form_message: "Mensaje (Opcional)",
-    form_message_placeholder: "Déjanos tus mejores deseos...",
-    form_submit: "Enviar Confirmación",
+    modal_title: "RSVP",
+    modal_subtitle: "Bil Ronny Jimenez & Dahyana Hiciano Perez",
+    modal_deadline: "Por favor confirma antes del <strong>15 de junio de 2026</strong>",
+    form_name: "Nombre completo",
+    form_companion: "Acompanante",
+    form_name_placeholder: "Ej. Andrea Perez",
+    form_companion_placeholder: "Nombre completo del acompanante",
+    form_attendance: "Asistiras?",
+    form_yes: "Si, con mucho gusto",
+    form_no: "No podre asistir",
+    form_phone: "Telefono (WhatsApp)",
+    form_phone_placeholder: "Ej. +1 809 000 0000",
+    form_message: "Mensaje opcional",
+    form_message_placeholder: "Dedicatoria para los novios",
+    form_submit: "Enviar confirmacion",
 
-    // Validation
-    val_name: "Por favor, ingresa tu nombre.",
-    val_phone: "Por favor, ingresa tu teléfono.",
-    val_rate_limit: "Por favor espera unos segundos antes de intentar de nuevo.",
+    val_name: "Ingresa un nombre valido.",
+    val_phone: "Ingresa un telefono valido.",
+    val_rate_limit: "Espera unos segundos antes de reenviar.",
 
-    // Success
-    success_title: "¡Gracias!",
-    success_subtitle: "Tu confirmación fue recibida",
-    success_text: "Nos alegra mucho contar contigo en este día tan especial. ¡Nos vemos el 11 de julio!",
-    success_apple_cal: "Añadir a Apple Calendar",
-    success_google_cal: "Añadir a Google Calendar",
-    success_close: "Cerrar Formulario",
-    success_test: "(Pruebas: Enviar otra respuesta)",
+    success_title: "Gracias por confirmar",
+    success_subtitle: "Tu respuesta fue recibida",
+    success_text: "Nos emociona celebrar contigo este gran dia.",
+    success_apple_cal: "Agregar a Apple Calendar",
+    success_google_cal: "Agregar a Google Calendar",
+    success_close: "Cerrar",
+    success_test: "(Modo prueba: enviar otra respuesta)",
 
-    // Error
-    error_default: "Hubo un error. Intenta de nuevo",
-    error_timeout: "Tiempo agotado. Intenta de nuevo.",
+    error_default: "No se pudo enviar. Intenta nuevamente.",
+    error_timeout: "La solicitud tardo demasiado. Vuelve a intentar.",
 
-    // Songs
-
-
-    // Footer
-    footer_eyebrow: "Con cariño y gratitud",
-    footer_made: "Hecho con amor para nuestros invitados"
+    footer_eyebrow: "Con amor",
+    footer_made: "Disenado por AM dev Studio"
   },
-
   en: {
-    // Navbar
     nav_home: "Home",
-    nav_moments: "Moments",
+    nav_moments: "Our Story",
     nav_details: "Details",
 
-    // Hero
-    hero_eyebrow: "WE'RE GETTING MARRIED!",
-    hero_date: "Saturday, July 11th, 2026",
-    hero_instruction: "Scroll down for event details.",
+    hero_eyebrow: "We're getting married",
+    hero_date: "July 11, 2026",
+    hero_instruction: "Scroll to explore every detail.",
     countdown_days: "Days",
     countdown_hours: "Hours",
-    countdown_minutes: "Minutes",
-    countdown_seconds: "Seconds",
-    countdown_passed: "As of today, we are married!",
+    countdown_minutes: "Min",
+    countdown_seconds: "Sec",
+    countdown_passed: "Our new chapter has begun.",
 
-    // Album
     album_title: "Moments that brought us here",
-    album_subtitle: "A day that changed our lives forever",
-    caption_1: "The big question",
-    caption_2: "She said yes!",
-    caption_3: "You and me, always",
-    caption_4: "Forever",
-    caption_5: "With all my heart",
-    caption_6: "My favorite place",
+    album_subtitle: "Bil Ronny Jimenez and Dahyana Hiciano Perez",
+    caption_1: "The promise",
+    caption_2: "Partners",
+    caption_3: "Our forever",
+    caption_4: "Elegance and love",
+    caption_5: "Our best version",
+    caption_6: "One shared path",
 
-    // Details
-    details_title: "Event Details",
+    details_title: "Event details",
     details_subtitle: "Everything you need to know",
     timeline_church: "Ceremony",
-    timeline_church_desc: "6:00 PM - Doors open.",
+    timeline_church_desc: "6:00 PM - Please arrive on time.",
     timeline_event: "Reception",
-    timeline_desc: "7:00 PM - Doors open; we look forward to celebrating with you.",
-    dress_title: "Dress Code",
-    dress_desc: "Formal / No green or white colors, please.",
-    no_kids_title: "Adults Only",
-    no_kids_desc: "This is an adults-only celebration.",
+    timeline_desc: "7:00 PM - Toast and celebration.",
+    dress_title: "Dress code",
+    dress_desc: "Formal. Important: please avoid green and white.",
+    no_kids_title: "Adults only",
+    no_kids_desc: "Please arrange childcare in advance.",
     gifts_title: "Gifts",
-    gifts_desc: "Cash gifts are preferred.",
+    gifts_desc: "Your presence is our greatest gift.",
     seats_title: "Seats",
-    seats_desc: "Please respect the number of seats assigned in your invitation.",
-    faq_q1: "When and where is the ceremony?",
-    faq_q2: "What time is the reception?",
+    seats_desc: "Please respect the seat count in your invite link.",
+    faq_q1: "When is the ceremony?",
+    faq_q2: "When does the reception start?",
     faq_q3: "What is the dress code?",
-    faq_q4: "Are children allowed?",
-    faq_q5: "Do you have a gift registry?",
-    faq_q6: "How many seats are assigned to me?",
+    faq_q4: "Are any colors restricted?",
+    faq_q5: "Are kids allowed?",
+    faq_q6: "How does my seat count work?",
 
-    // Locations
-    loc_title: "How to Get There",
-    loc_subtitle: "We are waiting for you at",
+    loc_title: "Location",
+    loc_subtitle: "Open route in Google Maps",
     loc_btn: "Open in Google Maps",
 
-    // RSVP
     rsvp_title: "RSVP",
-    rsvp_subtitle: "It will be a pleasure to share this special moment with you",
-    rsvp_card_subtitle: "We hope to count on your presence",
-    rsvp_card_text: "Have you reviewed all the event details? Make sure to read them before confirming your attendance.",
-    rsvp_deadline: "Deadline: June 15th",
-    rsvp_open_btn: "Open Form",
+    rsvp_subtitle: "Deadline: June 15, 2026",
+    rsvp_card_subtitle: "We would love to celebrate with you",
+    rsvp_card_text: "Submit this form once per household.",
+    rsvp_deadline: "Please reply by June 15",
+    rsvp_open_btn: "Confirm now",
 
-    // Modal Form
-    modal_title: "Confirmation",
-    modal_subtitle: "It will be a pleasure to have you",
-    modal_deadline: "Please confirm before <strong>June 15th</strong>",
-    form_name: "Your full name",
+    modal_title: "RSVP",
+    modal_subtitle: "Bil Ronny Jimenez & Dahyana Hiciano Perez",
+    modal_deadline: "Please confirm before <strong>June 15, 2026</strong>",
+    form_name: "Full name",
     form_companion: "Guest",
-    form_name_placeholder: "e.g. Jane Doe",
-    form_companion_placeholder: "Full name",
+    form_name_placeholder: "e.g. Andrea Perez",
+    form_companion_placeholder: "Guest full name",
     form_attendance: "Will you attend?",
-    form_yes: "Yes, I'll be there!",
-    form_no: "Sorry, I can't make it",
-    form_phone: "Mobile Phone (WhatsApp)",
-    form_phone_placeholder: "e.g. +1 809 123 4567",
-    form_message: "Message (Optional)",
-    form_message_placeholder: "Send us your best wishes...",
-    form_submit: "Send Confirmation",
+    form_yes: "Yes, I'd love to",
+    form_no: "I won't be able to attend",
+    form_phone: "Phone (WhatsApp)",
+    form_phone_placeholder: "e.g. +1 809 000 0000",
+    form_message: "Optional message",
+    form_message_placeholder: "A short note for the couple",
+    form_submit: "Send RSVP",
 
-    // Validation
-    val_name: "Please enter your name.",
-    val_phone: "Please enter your phone number.",
-    val_rate_limit: "Please wait a few seconds before trying again.",
+    val_name: "Please enter a valid name.",
+    val_phone: "Please enter a valid phone number.",
+    val_rate_limit: "Please wait a few seconds before retrying.",
 
-    // Success
-    success_title: "Thank you!",
-    success_subtitle: "Your RSVP has been received",
-    success_text: "We are so happy to have you join us on this special day. See you on July 11th!",
+    success_title: "Thanks for your RSVP",
+    success_subtitle: "Your response has been received",
+    success_text: "We're excited to celebrate this day with you.",
     success_apple_cal: "Add to Apple Calendar",
     success_google_cal: "Add to Google Calendar",
-    success_close: "Close Form",
-    success_test: "(Testing: Send another response)",
+    success_close: "Close",
+    success_test: "(Test mode: submit another response)",
 
-    // Error
-    error_default: "There was an error. Please try again",
-    error_timeout: "Request timed out. Please try again.",
+    error_default: "We couldn't submit your RSVP. Please try again.",
+    error_timeout: "Request timed out. Please retry.",
 
-    // Songs
-
-
-    // Footer
-    footer_eyebrow: "With love and gratitude",
-    footer_made: "Made with love for our guests"
+    footer_eyebrow: "With love",
+    footer_made: "Designed by AM dev Studio"
   }
-};
+});
 
-/** Función auxiliar: obtener una traducción por clave **/
 function t(key) {
   return I18N[LANG]?.[key] ?? I18N.es[key] ?? key;
 }
 
-/** Aplicar traducciones a todos los elementos con data-i18n **/
 function applyTranslations() {
-  // Cambiar el atributo lang del <html>
   document.documentElement.lang = LANG;
 
-  // Traducir elementos estáticos con data-i18n
-  document.querySelectorAll("[data-i18n]").forEach(el => {
+  document.querySelectorAll("[data-i18n]").forEach((el) => {
     const key = el.getAttribute("data-i18n");
-    const value = I18N[LANG]?.[key] ?? I18N.es[key];
-    if (value) {
-      // Soportar HTML en ciertas keys (como modal_deadline que tiene <strong>)
-      if (value.includes("<")) {
-        el.innerHTML = value;
-      } else {
-        el.textContent = value;
-      }
+    const value = t(key);
+    if (value.includes("<")) {
+      el.innerHTML = value;
+    } else {
+      el.textContent = value;
     }
   });
 
-  // Traducir placeholders con data-i18n-placeholder
-  document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+  document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
     const key = el.getAttribute("data-i18n-placeholder");
-    const value = I18N[LANG]?.[key] ?? I18N.es[key];
-    if (value) el.placeholder = value;
+    el.placeholder = t(key);
   });
 
-  // Traducir aria-labels con data-i18n-aria
-  document.querySelectorAll("[data-i18n-aria]").forEach(el => {
+  document.querySelectorAll("[data-i18n-aria]").forEach((el) => {
     const key = el.getAttribute("data-i18n-aria");
-    const value = I18N[LANG]?.[key] ?? I18N.es[key];
-    if (value) el.setAttribute("aria-label", value);
+    el.setAttribute("aria-label", t(key));
   });
 
-  // Actualizar el botón de idioma
   const label = document.getElementById("langLabel");
-  if (label) {
-    label.textContent = LANG === "es" ? "ENG" : "ESP";
-  }
+  if (label) label.textContent = LANG === "es" ? "EN" : "ES";
 }
 
-/** Toggle de idioma dinámico **/
 function toggleLanguage() {
   LANG = LANG === "es" ? "en" : "es";
   applyTranslations();
 }
 
-// Ejecutar traducciones al cargar
-applyTranslations();
-
-// Conectar el botón de idioma
 document.addEventListener("DOMContentLoaded", () => {
+  applyTranslations();
   const langBtn = document.getElementById("langToggle");
-  if (langBtn) {
-    langBtn.addEventListener("click", toggleLanguage);
-  }
+  if (langBtn) langBtn.addEventListener("click", toggleLanguage);
 });
