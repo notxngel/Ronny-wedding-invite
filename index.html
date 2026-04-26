@@ -199,45 +199,28 @@
             </div>
 
             <!-- FAQ (Acordeón de Detalles) -->
+            <!-- FAQ (Acordeón de Detalles) -->
             <div class="faq" role="list" aria-label="Preguntas frecuentes y detalles">
-                <!-- 1. Ceremonia -->
+                <!-- 1. Ceremonia y Recepción -->
                 <div class="faq__item" role="listitem">
                     <button class="faq__question" aria-expanded="false" onclick="toggleFAQ(this)">
-                        <span data-i18n="faq_q1">¿Cuándo y dónde es la ceremonia?</span>
+                        <span data-i18n="faq_q1">¿Cuándo y dónde será el evento?</span>
                         <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M6 9l6 6 6-6"/>
                         </svg>
                     </button>
                     <div class="faq__answer">
                         <div class="faq__answer-content">
-                            <p><strong data-i18n="timeline_church">Ceremonia</strong></p>
-                            <p>6:00 PM — Lugar por confirmar</p>
-                            <p class="faq__small" data-i18n="timeline_church_desc">6:00 PM - Inicio puntual.</p>
+                            <p><strong data-i18n="timeline_church">Ceremonia y Recepción</strong></p>
+                            <p data-i18n="timeline_church_desc">6:00 PM — The Brownstone, Paterson. Se agradece su puntual asistencia.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- 2. Recepción -->
+                <!-- 2. Dress Code -->
                 <div class="faq__item" role="listitem">
                     <button class="faq__question" aria-expanded="false" onclick="toggleFAQ(this)">
-                        <span data-i18n="faq_q2">¿A qué hora es la recepción?</span>
-                        <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M6 9l6 6 6-6"/>
-                        </svg>
-                    </button>
-                    <div class="faq__answer">
-                        <div class="faq__answer-content">
-                            <p><strong data-i18n="timeline_event">Recepción</strong></p>
-                            <p>7:00 PM — Lugar por confirmar</p>
-                            <p class="faq__small" data-i18n="timeline_desc">7:00 PM - Inicio puntual; los esperamos para celebrar juntos.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 3. Dress Code -->
-                <div class="faq__item" role="listitem">
-                    <button class="faq__question" aria-expanded="false" onclick="toggleFAQ(this)">
-                        <span data-i18n="faq_q3">¿Cuál es el código de vestimenta?</span>
+                        <span data-i18n="faq_q2">¿Cuál es el código de vestimenta?</span>
                         <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M6 9l6 6 6-6"/>
                         </svg>
@@ -250,10 +233,10 @@
                     </div>
                 </div>
 
-                <!-- 4. Niños -->
+                <!-- 3. Niños -->
                 <div class="faq__item" role="listitem">
                     <button class="faq__question" aria-expanded="false" onclick="toggleFAQ(this)">
-                        <span data-i18n="faq_q4">¿Se permiten niños?</span>
+                        <span data-i18n="faq_q3">¿Se permiten niños?</span>
                         <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M6 9l6 6 6-6"/>
                         </svg>
@@ -266,10 +249,10 @@
                     </div>
                 </div>
 
-                <!-- 5. Regalos -->
+                <!-- 4. Regalos -->
                 <div class="faq__item" role="listitem">
                     <button class="faq__question" aria-expanded="false" onclick="toggleFAQ(this)">
-                        <span data-i18n="faq_q5">¿Tienen mesa de regalos?</span>
+                        <span data-i18n="faq_q4">¿Tienen mesa de regalos?</span>
                         <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M6 9l6 6 6-6"/>
                         </svg>
@@ -282,10 +265,10 @@
                     </div>
                 </div>
 
-                <!-- 6. Cupos -->
+                <!-- 5. Cupos -->
                 <div class="faq__item" role="listitem">
                     <button class="faq__question" aria-expanded="false" onclick="toggleFAQ(this)">
-                        <span data-i18n="faq_q6">¿Cuántos cupos tengo asignados?</span>
+                        <span data-i18n="faq_q5">¿Cuántos cupos tengo asignados?</span>
                         <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M6 9l6 6 6-6"/>
                         </svg>
@@ -374,7 +357,7 @@
                     <div class="form__group">
                         <label class="form__label" for="phone" data-i18n="form_phone">Teléfono Móvil (WhatsApp)</label>
                         <input type="tel" class="form__input" id="phone" name="phone" inputmode="tel"
-                            placeholder="Ej. +1 809 123 4567" data-i18n-placeholder="form_phone_placeholder" required>
+                            placeholder="Ej. +1 809 123 4567" data-i18n-placeholder="form_phone_placeholder" required maxlength="20">
                         <span class="form__error" id="error-phone"></span>
                     </div>
 
@@ -383,7 +366,7 @@
                     <div class="form__group">
                         <label class="form__label" for="message" data-i18n="form_message">Mensaje (Opcional)</label>
                         <textarea class="form__input" id="message" name="message" rows="2"
-                            placeholder="Déjanos tus mejores deseos..." data-i18n-placeholder="form_message_placeholder"></textarea>
+                            placeholder="Déjanos tus mejores deseos..." data-i18n-placeholder="form_message_placeholder" maxlength="300"></textarea>
                     </div>
 
                     <button type="submit" id="submitBtn" class="btn btn--submit" data-i18n="form_submit">Enviar Confirmación</button>

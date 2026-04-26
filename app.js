@@ -156,20 +156,49 @@ function toggleFAQ(button) {
 
 /** 4. AUTO-LOAD RSVP: Verificar confirmación previa **/
 (function initRSVP() {
-    // Comentado temporalmente para pruebas: permite ver el formulario siempre
-    /*
-    if (localStorage.getItem('rsvpStatus') === 'sent') {
+    const params = new URLSearchParams(window.location.search);
+    
+    // Modo Admin: Reinicia todo el estado si la clave es correcta
+    if (params.get("admin") === CONFIG.adminKey || params.get("dbg") === CONFIG.adminKey) {
+        localStorage.removeItem('rsvpStatus');
+        sessionStorage.removeItem('_rsvpSubmitCount');
+        sessionStorage.removeItem('_rsvpLastSubmit');
+        alert("Modo Admin: Formulario de confirmación reiniciado.");
+        // Limpiamos la URL
+        window.history.replaceState({}, document.title, window.location.pathname);
+    } else if (localStorage.getItem('rsvpStatus') === 'sent') {
         mostrarExito();
     }
-    */
 })();
 
 /** 5. CUPOS: Generación dinámica de campos de invitados **/
 
 (function generarCamposDeNombres() {
   const params = new URLSearchParams(window.location.search);
-  // Cupos: mínimo 1, máximo 4. Si no hay ?c= en la URL, muestra 1 campo.
-  const cupos = Math.min(Math.max(parseInt(params.get("c")) || 1, 1), CONFIG.maxCupos);
+  
+  let titularPrefill = "";
+  let cupos = 1;
+
+  // Si usamos el enlace encriptado ?inv=
+  const invToken = params.get("inv");
+  if (invToken) {
+    try {
+      // Decodificamos Base64 (Formato: Nombre|Cupos)
+      const decoded = atob(invToken);
+      const parts = decoded.split("|");
+      if (parts.length === 2) {
+        titularPrefill = parts[0].replace(/[<>]/g, ""); // Sanitización básica
+        cupos = parseInt(parts[1], 10) || 1;
+      }
+    } catch (e) {
+      console.warn("Link de invitación inválido.");
+    }
+  } else {
+    // Legacy / fallback si se usa ?c=
+    cupos = parseInt(params.get("c")) || 1;
+  }
+  
+  cupos = Math.min(Math.max(cupos, 1), CONFIG.maxCupos);
 
   const container = document.getElementById("guestNamesContainer");
   if (!container) return;
@@ -179,6 +208,12 @@ function toggleFAQ(button) {
     const label = i === 1 ? t("form_name") : `${t("form_companion")} ${i - 1}`;
     const placeholder = i === 1 ? t("form_name_placeholder") : t("form_companion_placeholder");
     const required = i === 1 ? "required" : "";
+    
+    // Si prellenamos el titular, lo marcamos como readonly para que no lo alteren accidentalmente
+    const valueAttr = (i === 1 && titularPrefill) 
+        ? `value="${titularPrefill}" readonly style="background-color: rgba(178, 172, 136, 0.18); font-weight: 600;"` 
+        : "";
+
     html += `
             <div class="form__group">
                 <label class="form__label" for="guest${i}">${label}</label>
@@ -189,6 +224,7 @@ function toggleFAQ(button) {
                     name="guest${i}"
                     placeholder="${placeholder}"
                     ${required}
+                    ${valueAttr}
                     autocomplete="off"
                 >
                 <span class="form__error" id="error-guest${i}"></span>
@@ -273,13 +309,38 @@ setupValidationListeners();
 // Seleccionamos el formulario del HTML
 const rsvpForm = document.getElementById("rsvpForm");
 
+// --- Utilidad de sanitización ---
+/**
+ * Elimina etiquetas HTML y caracteres peligrosos de una cadena.
+ * Previene inyección XSS en los datos enviados al webhook.
+ *
+ * @param {string} str - La cadena a sanitizar.
+ * @returns {string} La cadena limpia.
+ */
+function sanitize(str) {
+  if (typeof str !== "string") return "";
+  return str
+    .replace(/[<>]/g, "")        // Elimina < y >
+    .replace(/javascript:/gi, "") // Elimina intentos de JS inline
+    .replace(/on\w+=/gi, "")      // Elimina event handlers (onclick=, onerror=, etc.)
+    .trim()
+    .slice(0, 500);               // Límite de 500 caracteres por campo
+}
+
 // --- Funciones Auxiliares para el Submit ---
-let _lastSubmit = 0;
+let _lastSubmit = parseInt(sessionStorage.getItem("_rsvpLastSubmit") || "0", 10);
+let _submitCount = parseInt(sessionStorage.getItem("_rsvpSubmitCount") || "0", 10);
 
 function isSafeToSubmit() {
-  // Rate limiting extraido
+  // Rate limiting con doble capa (variable + sessionStorage)
   const now = Date.now();
   if (now - _lastSubmit < CONFIG.rateLimitMs) {
+    mostrarError(t("val_rate_limit"));
+    return false;
+  }
+
+  // Protección anti-abuso: máximo 5 envíos por sesión
+  if (_submitCount >= 5) {
     mostrarError(t("val_rate_limit"));
     return false;
   }
@@ -312,6 +373,18 @@ function handleValidation() {
       if (!firstInvalidInput) firstInvalidInput = input;
     }
   });
+
+  // Validación específica de teléfono (formato internacional)
+  const phoneInput = document.getElementById("phone");
+  if (phoneInput && phoneInput.value.trim() !== "") {
+    const phoneClean = phoneInput.value.replace(/[\s\-().]/g, "");
+    const phoneRegex = /^\+?[0-9]{7,15}$/;
+    if (!phoneRegex.test(phoneClean)) {
+      setInvalid(phoneInput, t("val_phone"));
+      isValid = false;
+      if (!firstInvalidInput) firstInvalidInput = phoneInput;
+    }
+  }
 
   if (!isValid) {
     firstInvalidInput.focus();
@@ -361,16 +434,18 @@ function extractGuestData() {
   const formData = new FormData(rsvpForm);
   const mensajeUsuario = formData.get("message") || "";
   const telefono = formData.get("phone") || "";
+  const mensajeFinal = acompanantes.length > 0
+      ? `Acompañantes: ${acompanantes.map(sanitize).join(", ")}${mensajeUsuario ? "\n\nMensaje: " + sanitize(mensajeUsuario) : ""}`
+      : sanitize(mensajeUsuario);
+
   const data = {
-    nombre: titular,
-    title: titular,
-    telefono: telefono,
-    invitados: todosLosNombres.length,
-    asistencia: formData.get("attendance"),
+    nombre: sanitize(titular),
+    title: sanitize(titular),
+    telefono: sanitize(telefono),
+    invitados: Math.min(Math.max(todosLosNombres.length, 1), CONFIG.maxCupos),
+    asistencia: formData.get("attendance") === "si" ? "si" : "no",
     token: CONFIG.securityToken,
-    mensaje: acompanantes.length > 0
-        ? `Acompañantes: ${acompanantes.join(", ")}${mensajeUsuario ? "\n\nMensaje: " + mensajeUsuario : ""}`
-        : mensajeUsuario,
+    mensaje: mensajeFinal,
   };
 
   return data;
@@ -400,6 +475,9 @@ async function sendDataToMake(data) {
     if (response.ok) {
       localStorage.setItem('rsvpStatus', 'sent');
       _lastSubmit = Date.now();
+      _submitCount++;
+      sessionStorage.setItem("_rsvpLastSubmit", String(_lastSubmit));
+      sessionStorage.setItem("_rsvpSubmitCount", String(_submitCount));
       mostrarExito();
     } else {
       throw new Error(`Error del servidor: ${response.status}`);

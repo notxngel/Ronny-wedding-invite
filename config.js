@@ -14,7 +14,7 @@ const CONFIG = Object.freeze({
 
   mapsURL: "https://maps.google.com",
 
-  webhookURL: "TU_WEBHOOK_MAKE_AQUI",
+  webhookURL: "https://hook.us2.make.com/7dkcdupytu3b78oonmhlbo62lcv4ebkl",
   securityToken: "bilronny-dahyana-rsvp-2026-amds",
 
   maxCupos: 4,
