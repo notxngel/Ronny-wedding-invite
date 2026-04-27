@@ -2,6 +2,7 @@
   --font-serif: "Playfair Display", serif;
   --font-sans: "Lato", sans-serif;
   --font-script: "Parisienne", cursive;
+  --font-display: "Cormorant Garamond", serif;
 
   --color-accent: #b2ac88;
   --color-ivory: #fffff0;
@@ -53,8 +54,8 @@ body::before {
   inset: 0;
   z-index: -2;
   background:
-    linear-gradient(rgba(255, 255, 240, 0.72), rgba(245, 245, 220, 0.8)),
-    url("images/body_bg_sage_subtle.webp") center / cover no-repeat;
+    linear-gradient(rgba(255, 255, 240, 0.45), rgba(245, 245, 220, 0.5)),
+    url("images/body_bg_floral.png") center / cover no-repeat;
   pointer-events: none;
 }
 
@@ -94,9 +95,10 @@ body::before {
 .navbar__logo {
   text-decoration: none;
   color: var(--color-ink);
-  font-family: var(--font-script);
-  font-size: clamp(1.65rem, 3vw, 2.3rem);
-  letter-spacing: 0.03em;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  letter-spacing: 0.05em;
   line-height: 1;
   justify-self: center;
 }
@@ -266,23 +268,26 @@ body::before {
 
 .hero__title {
   margin: 0;
-  font-family: var(--font-script);
-  font-size: clamp(3.1rem, 9vw, 7rem);
-  line-height: 0.9;
-  letter-spacing: 0.02em;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(3.5rem, 10vw, 7.5rem);
+  line-height: 1.1;
+  letter-spacing: 0.01em;
   color: #fff8e8;
   text-shadow: 0 4px 14px rgba(20, 24, 18, 0.3);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.06em;
+  gap: 0.02em;
 }
 
 .hero__amp {
   color: #f2e8c9;
   display: block;
-  line-height: 0.7;
-  font-size: 0.74em;
+  line-height: 1;
+  font-size: 0.65em;
+  font-style: italic;
+  font-weight: 400;
 }
 
 .hero__divider {
@@ -343,10 +348,12 @@ body::before {
 
 .section-header__title {
   margin: 0;
-  font-family: var(--font-script);
-  letter-spacing: 0.03em;
-  line-height: 0.98;
-  font-size: clamp(2.2rem, 6vw, 3.7rem);
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.1;
+  font-size: clamp(2.4rem, 6.5vw, 4.2rem);
+  color: var(--color-ink);
 }
 
 .section-header__subtitle {
@@ -509,8 +516,9 @@ body::before {
 
 .location-card__title {
   margin: 0;
-  font-family: var(--font-serif);
-  font-size: clamp(1.4rem, 4vw, 2rem);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
 }
 
 .location-card__address {
