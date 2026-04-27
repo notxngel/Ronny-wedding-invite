@@ -12,8 +12,8 @@
 
 /** 1. CONFIGURACIÓN: Fecha y Elementos Base **/
 
-// Fecha de la boda: 11 de Julio de 2026 (ceremonia a las 6pm)
-const weddingDate = new Date("2026-07-11T18:00:00");
+// Fecha de la boda se obtiene de config.js para un único punto de verdad
+const weddingDate = new Date(CONFIG.eventDateISO);
 
 // Elementos del contador cacheados para rendimiento
 const countdownElements = {
