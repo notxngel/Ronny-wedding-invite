@@ -537,12 +537,35 @@ function mostrarExito() {
   const isIOS = /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
   const isMac = /Macintosh/.test(userAgent);
   const isApple = isIOS || isMac;
+  // Generar URLs para los calendarios
+  const startDate = new Date(CONFIG.eventDateISO);
+  const endDate = new Date(startDate.getTime() + 6 * 60 * 60 * 1000); // Duración: 6 horas
+  const formatDateForCal = (date) => date.toISOString().replace(/-|:|\.\d\d\d/g, "");
+  
+  const calDates = `${formatDateForCal(startDate)}/${formatDateForCal(endDate)}`;
+  const eventTitle = encodeURIComponent(`Boda: ${CONFIG.coupleDisplayName}`);
+  const eventDetails = encodeURIComponent("¡Nos casamos! Será un honor compartir este día contigo.");
+  const eventLocation = encodeURIComponent("The Brownstone, Paterson, NJ");
+  
+  const googleCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${eventTitle}&dates=${calDates}&details=${eventDetails}&location=${eventLocation}`;
+  
+  const icsContent = `BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+DTSTART:${formatDateForCal(startDate)}
+DTEND:${formatDateForCal(endDate)}
+SUMMARY:Boda: ${CONFIG.coupleDisplayName}
+DESCRIPTION:¡Nos casamos! Será un honor compartir este día contigo.
+LOCATION:The Brownstone, Paterson, NJ
+END:VEVENT
+END:VCALENDAR`;
+  const appleCalUrl = `data:text/calendar;charset=utf8,${encodeURIComponent(icsContent)}`;
 
   let calendarButtonsHTML = '';
   if (isApple) {
       calendarButtonsHTML = `
             <div style="display: flex; justify-content: center; margin-top: 2rem;">
-                <a href="#" class="btn btn--dark" style="background-color: #000; border-color: #000; color: white;">
+                <a href="${appleCalUrl}" download="boda_bilronny_dahyana.ics" class="btn btn--dark" style="background-color: #000; border-color: #000; color: white;">
                     ${t("success_apple_cal")}
                 </a>
             </div>
@@ -550,7 +573,7 @@ function mostrarExito() {
   } else {
       calendarButtonsHTML = `
             <div style="display: flex; justify-content: center; margin-top: 2rem;">
-                <a href="#" target="_blank" rel="noopener" class="btn btn--dark" style="background-color: #4285F4; border-color: #4285F4; color: white;">
+                <a href="${googleCalUrl}" target="_blank" rel="noopener" class="btn btn--dark" style="background-color: #4285F4; border-color: #4285F4; color: white;">
                     ${t("success_google_cal")}
                 </a>
             </div>
