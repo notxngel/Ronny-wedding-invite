@@ -565,7 +565,7 @@ END:VCALENDAR`;
   if (isApple) {
       calendarButtonsHTML = `
             <div style="display: flex; justify-content: center; margin-top: 2rem;">
-                <a href="${appleCalUrl}" download="boda_bilronny_dahyana.ics" class="btn btn--dark" style="background-color: #000; border-color: #000; color: white;">
+                <a href="${appleCalUrl}" class="btn btn--dark" style="background-color: #000; border-color: #000; color: white;">
                     ${t("success_apple_cal")}
                 </a>
             </div>
