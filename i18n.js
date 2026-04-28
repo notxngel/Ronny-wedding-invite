@@ -31,7 +31,7 @@ const I18N = Object.freeze({
     details_title: "Detalles del evento",
     details_subtitle: "Todo lo que necesitas saber",
     timeline_church: "Ceremonia y Recepción",
-    timeline_church_desc: "6:00 PM — The Brownstone, Paterson. Se agradece su puntual asistencia.",
+    timeline_church_desc: "6:00 PM Ceremonia 7:00 PM Recepción — The Brownstone, Paterson. Se agradece su puntual asistencia.",
     timeline_event: "Celebración",
     timeline_desc: "Continuaremos con la recepción en el mismo lugar.",
     dress_title: "Dress code",
