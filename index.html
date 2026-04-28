@@ -200,87 +200,50 @@
 
             <!-- FAQ (Acordeón de Detalles) -->
             <!-- FAQ (Acordeón de Detalles) -->
-            <div class="faq" role="list" aria-label="Preguntas frecuentes y detalles">
-                <!-- 1. Ceremonia y Recepción -->
-                <div class="faq__item" role="listitem">
-                    <button class="faq__question" aria-expanded="false" onclick="toggleFAQ(this)">
-                        <span data-i18n="faq_q1">¿Cuándo y dónde será el evento?</span>
-                        <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M6 9l6 6 6-6"/>
-                        </svg>
-                    </button>
-                    <div class="faq__answer">
-                        <div class="faq__answer-content">
-                            <p><strong data-i18n="timeline_church">Ceremonia y Recepción</strong></p>
-                            <p data-i18n="timeline_church_desc">6:00 PM Ceremonia 7:00 PM Recepción — The Brownstone, Paterson. Se agradece su puntual asistencia.</p>
+            <div class="info-card-container rsvp__card">
+                <div class="info-list">
+                    <!-- 1. Ceremonia y Recepción -->
+                    <div class="info-item">
+                        <h3 class="info-item__title" data-i18n="timeline_church">Ceremonia y Recepción</h3>
+                        <p class="info-item__text" data-i18n="timeline_church_desc">6:00 PM Ceremonia 7:00 PM Recepción — The Brownstone, Paterson. Se agradece su puntual asistencia.</p>
+                    </div>
+
+                    <div class="rsvp__card-divider"></div>
+
+                    <!-- 2. Dress Code -->
+                    <div class="info-item">
+                        <h3 class="info-item__title" data-i18n="dress_title">Código de Vestimenta</h3>
+                        <p class="info-item__text" data-i18n="dress_desc">Formal / No usar colores verdes o blancos.</p>
+                        <div class="dress-code-visual">
+                            <div class="color-prohibited green" title="No Verde"></div>
+                            <div class="color-prohibited white" title="No Blanco"></div>
                         </div>
                     </div>
-                </div>
 
-                <!-- 2. Dress Code -->
-                <div class="faq__item" role="listitem">
-                    <button class="faq__question" aria-expanded="false" onclick="toggleFAQ(this)">
-                        <span data-i18n="faq_q2">¿Cuál es el código de vestimenta?</span>
-                        <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M6 9l6 6 6-6"/>
-                        </svg>
-                    </button>
-                    <div class="faq__answer">
-                        <div class="faq__answer-content">
-                            <p><strong data-i18n="dress_title">Código de Vestimenta</strong></p>
-                            <p data-i18n="dress_desc">Formal / No usar colores verdes o blancos.</p>
-                        </div>
+                    <div class="rsvp__card-divider"></div>
+
+                    <!-- 3. Niños -->
+                    <div class="info-item">
+                        <h3 class="info-item__title" data-i18n="no_kids_title">No Niños</h3>
+                        <p class="info-item__text" data-i18n="no_kids_desc">Celebración sólo para adultos.</p>
+                    </div>
+
+                    <div class="rsvp__card-divider"></div>
+
+                    <!-- 4. Regalos -->
+                    <div class="info-item">
+                        <h3 class="info-item__title" data-i18n="gifts_title">Regalos</h3>
+                        <p class="info-item__text" data-i18n="gifts_desc">Lluvia de sobres.</p>
+                    </div>
+
+                    <div class="rsvp__card-divider"></div>
+
+                    <!-- 5. Cupos -->
+                    <div class="info-item">
+                        <h3 class="info-item__title" data-i18n="seats_title">Cupos</h3>
+                        <p class="info-item__text" data-i18n="seats_desc">Agradecemos respetar los cupos asignados en su invitación.</p>
                     </div>
                 </div>
-
-                <!-- 3. Niños -->
-                <div class="faq__item" role="listitem">
-                    <button class="faq__question" aria-expanded="false" onclick="toggleFAQ(this)">
-                        <span data-i18n="faq_q3">¿Se permiten niños?</span>
-                        <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M6 9l6 6 6-6"/>
-                        </svg>
-                    </button>
-                    <div class="faq__answer">
-                        <div class="faq__answer-content">
-                            <p><strong data-i18n="no_kids_title">No Niños</strong></p>
-                            <p data-i18n="no_kids_desc">Celebración sólo para adultos.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 4. Regalos -->
-                <div class="faq__item" role="listitem">
-                    <button class="faq__question" aria-expanded="false" onclick="toggleFAQ(this)">
-                        <span data-i18n="faq_q4">¿Tienen mesa de regalos?</span>
-                        <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M6 9l6 6 6-6"/>
-                        </svg>
-                    </button>
-                    <div class="faq__answer">
-                        <div class="faq__answer-content">
-                            <p><strong data-i18n="gifts_title">Regalos</strong></p>
-                            <p data-i18n="gifts_desc">Lluvia de sobres.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 5. Cupos -->
-                <div class="faq__item" role="listitem">
-                    <button class="faq__question" aria-expanded="false" onclick="toggleFAQ(this)">
-                        <span data-i18n="faq_q5">¿Cuántos cupos tengo asignados?</span>
-                        <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M6 9l6 6 6-6"/>
-                        </svg>
-                    </button>
-                    <div class="faq__answer">
-                        <div class="faq__answer-content">
-                            <p><strong data-i18n="seats_title">Cupos</strong></p>
-                            <p data-i18n="seats_desc">Agradecemos respetar los cupos asignados en su invitación.</p>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>

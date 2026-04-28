@@ -76,37 +76,12 @@ setInterval(updateCountdown, 1000);
     });
   }, { threshold: 0.2, rootMargin: "0px 0px -50px 0px" });
 
-  document.querySelectorAll(".faq__item, .map-in").forEach(el => {
+  document.querySelectorAll(".info-card, .map-in").forEach(el => {
     observer.observe(el);
   });
 })();
 
-/** 2.1 FAQ: Lógica de acordeón **/
-function toggleFAQ(button) {
-  const item = button.parentElement;
-  const answer = item.querySelector(".faq__answer");
-  const isOpen = item.classList.contains("active");
 
-  // Cerrar otros abiertos (opcional, para un efecto más limpio)
-  document.querySelectorAll(".faq__item").forEach((otherItem) => {
-    if (otherItem !== item) {
-      otherItem.classList.remove("active");
-      otherItem.querySelector(".faq__question").setAttribute("aria-expanded", "false");
-      otherItem.querySelector(".faq__answer").style.maxHeight = null;
-    }
-  });
-
-  // Toggle actual
-  if (isOpen) {
-    item.classList.remove("active");
-    button.setAttribute("aria-expanded", "false");
-    answer.style.maxHeight = null;
-  } else {
-    item.classList.add("active");
-    button.setAttribute("aria-expanded", "true");
-    answer.style.maxHeight = answer.scrollHeight + "px";
-  }
-}
 
 /** 3. NAVBAR: Lógica de visibilidad y menú móvil **/
 (function initNavbar() {

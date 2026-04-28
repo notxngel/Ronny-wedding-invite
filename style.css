@@ -460,51 +460,65 @@ body::before {
   letter-spacing: 0.08em;
 }
 
-.faq {
-  display: grid;
-  gap: var(--space-3);
+.info-card-container {
+  max-width: 42rem;
+  margin: 0 auto;
 }
 
-.faq__item {
-  border: 1px solid var(--color-line);
-  border-radius: var(--radius-md);
-  background: var(--color-card);
-  box-shadow: 0 8px 20px rgba(47, 51, 45, 0.05);
-}
-
-.faq__question {
-  width: 100%;
-  border: 0;
-  background: transparent;
-  padding: var(--space-4);
+.info-list {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  gap: 0;
+}
+
+.info-item {
+  padding: var(--space-2) 0;
+}
+
+.info-item__title {
   font-family: var(--font-serif);
+  font-size: 1.4rem;
   color: var(--color-ink);
-  font-size: 1.05rem;
+  margin-bottom: 0.5rem;
   letter-spacing: 0.02em;
 }
 
-.faq__icon {
-  transition: transform var(--transition);
-  flex-shrink: 0;
-}
-
-.faq__item.active .faq__icon {
-  transform: rotate(180deg);
-}
-
-.faq__answer {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height var(--transition);
-}
-
-.faq__answer-content {
-  padding: 0 var(--space-4) var(--space-4);
+.info-item__text {
   color: var(--color-muted);
+  font-size: 1rem;
+  line-height: 1.6;
 }
+
+.dress-code-visual {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.color-prohibited {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  position: relative;
+  border: 1px solid var(--color-line);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.color-prohibited::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 130%;
+  height: 2px;
+  background: #b91c1c; /* Un rojo elegante */
+  transform: translate(-50%, -50%) rotate(-45deg);
+  opacity: 0.85;
+}
+
+.color-prohibited.green { background: #2d5a27; }
+.color-prohibited.white { background: #ffffff; }
 
 .location-card {
   border: 1px solid var(--color-line);
