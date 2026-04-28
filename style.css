@@ -445,8 +445,13 @@ body::before {
   width: 100%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
+  object-position: center;
   border-radius: calc(var(--radius-md) - 0.4rem);
   background: #ebe9d7;
+}
+
+.polaroid__img--top {
+  object-position: top center;
 }
 
 .polaroid__caption {

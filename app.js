@@ -549,17 +549,7 @@ function mostrarExito() {
   
   const googleCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${eventTitle}&dates=${calDates}&details=${eventDetails}&location=${eventLocation}`;
   
-  const icsContent = `BEGIN:VCALENDAR
-VERSION:2.0
-BEGIN:VEVENT
-DTSTART:${formatDateForCal(startDate)}
-DTEND:${formatDateForCal(endDate)}
-SUMMARY:Boda: ${CONFIG.coupleDisplayName}
-DESCRIPTION:¡Nos casamos! Será un honor compartir este día contigo.
-LOCATION:The Brownstone, Paterson, NJ
-END:VEVENT
-END:VCALENDAR`;
-  const appleCalUrl = `data:text/calendar;charset=utf8,${encodeURIComponent(icsContent)}`;
+  const appleCalUrl = "invite.ics";
 
   let calendarButtonsHTML = '';
   if (isApple) {
