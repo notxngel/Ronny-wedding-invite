@@ -132,17 +132,29 @@ setInterval(updateCountdown, 1000);
 /** 4. AUTO-LOAD RSVP: Verificar confirmación previa **/
 (function initRSVP() {
     const params = new URLSearchParams(window.location.search);
+    const isAdmin = params.get("admin") === CONFIG.adminKey || params.get("dbg") === CONFIG.adminKey;
     
     // Modo Admin: Reinicia todo el estado si la clave es correcta
-    if (params.get("admin") === CONFIG.adminKey || params.get("dbg") === CONFIG.adminKey) {
+    if (isAdmin) {
         localStorage.removeItem('rsvpStatus');
         sessionStorage.removeItem('_rsvpSubmitCount');
         sessionStorage.removeItem('_rsvpLastSubmit');
+        sessionStorage.setItem('rsvpAdminBypass', 'true');
         alert("Modo Admin: Formulario de confirmación reiniciado.");
         // Limpiamos la URL
         window.history.replaceState({}, document.title, window.location.pathname);
-    } else if (localStorage.getItem('rsvpStatus') === 'sent') {
+    }
+
+    const hasBypass = sessionStorage.getItem('rsvpAdminBypass') === 'true';
+    
+    if (localStorage.getItem('rsvpStatus') === 'sent') {
         mostrarExito();
+    } else if (!hasBypass) {
+        const now = new Date();
+        const deadline = new Date(CONFIG.rsvpDeadlineISO);
+        if (now > deadline) {
+            mostrarRsvpCerrado();
+        }
     }
 })();
 
@@ -471,6 +483,15 @@ async function sendDataToMake(data) {
 rsvpForm?.addEventListener("submit", async (e) => {
   e.preventDefault();
 
+  // Verificación de fecha límite de RSVP del lado del cliente
+  const now = new Date();
+  const deadline = new Date(CONFIG.rsvpDeadlineISO);
+  const bypass = sessionStorage.getItem('rsvpAdminBypass') === 'true';
+  if (now > deadline && !bypass) {
+    mostrarError(t("rsvp_closed_subtitle") || "Registro cerrado");
+    return;
+  }
+
   if (!isSafeToSubmit()) return;
   if (!handleValidation()) return;
 
@@ -579,5 +600,30 @@ function mostrarError(mensaje = t("error_default")) {
       submitBtn.style.backgroundColor = "#b91c1c"; // Rojo para indicar error
   }
 }
+
+/**
+ * Muestra el mensaje de registro cerrado una vez superada la fecha límite.
+ * 
+ * @returns {void}
+ */
+function mostrarRsvpCerrado() {
+  const rsvpContainer = document.getElementById("rsvpContainer");
+  if (!rsvpContainer) return;
+
+  rsvpContainer.innerHTML = `
+        <div style="text-align: center; padding: 2rem 1rem;">
+            <h2 style="font-family: var(--font-serif); font-size: 2rem; margin-bottom: 0.5rem;" data-i18n="rsvp_closed_title">
+                ${t("rsvp_closed_title")}
+            </h2>
+            <p style="color: #c5a059; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.1em; margin-bottom: 1.5rem;" data-i18n="rsvp_closed_subtitle">
+                ${t("rsvp_closed_subtitle")}
+            </p>
+            <p style="color: #57534e; line-height: 1.6;" data-i18n="rsvp_closed_text">
+                ${t("rsvp_closed_text")}
+            </p>
+        </div>
+    `;
+}
+
 
 

@@ -76,6 +76,10 @@ const I18N = Object.freeze({
     form_message_placeholder: "Dedicatoria para los novios",
     form_submit: "Enviar confirmacion",
 
+    rsvp_closed_title: "Confirmaciones Cerradas",
+    rsvp_closed_subtitle: "El período de confirmación ha finalizado",
+    rsvp_closed_text: "La fecha límite para confirmar la asistencia fue el 15 de junio de 2026. Agradecemos su comprensión.",
+
     val_name: "Ingresa un nombre valido.",
     val_phone: "Ingresa un telefono valido.",
     val_rate_limit: "Espera unos segundos antes de reenviar.",
@@ -164,6 +168,10 @@ const I18N = Object.freeze({
     form_message: "Optional message",
     form_message_placeholder: "A short note for the couple",
     form_submit: "Send RSVP",
+
+    rsvp_closed_title: "RSVP Closed",
+    rsvp_closed_subtitle: "The confirmation period has ended",
+    rsvp_closed_text: "The deadline for confirming attendance was June 15, 2026. Thank you for your understanding.",
 
     val_name: "Please enter a valid name.",
     val_phone: "Please enter a valid phone number.",
